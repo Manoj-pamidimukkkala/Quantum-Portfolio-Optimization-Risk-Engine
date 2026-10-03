@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quantum Risk & Portfolio Engine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i data-lucide="cpu"></i>
+                <span>Q-Fin Engine</span>
+            </div>
+            <nav class="menu">
+                <button class="menu-btn active"><i data-lucide="sliders"></i> Risk Controls</button>
+                <button class="menu-btn"><i data-lucide="activity"></i> QPU Metrics</button>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main">
+            <header class="header">
+                <h2>Quantum Portfolio Optimizer (QAOA)</h2>
+                <div class="status-badge"><span class="pulse"></span> Qiskit Simulator Ready</div>
+            </header>
+
+            <div class="grid-container">
+                <!-- Config Card -->
+                <div class="card">
+                    <h3>Risk Factor Adjustment (q)</h3>
+                    <div class="range-group">
+                        <input type="range" id="riskRange" min="0.1" max="1.0" step="0.1" value="0.5" oninput="updateRiskVal(this.value)">
+                        <span id="riskVal">0.5</span>
+                    </div>
+                    <button class="btn-solve" onclick="runOptimization()">Execute QAOA Circuit</button>
+                </div>
+
+                <!-- Asset Table -->
+                <div class="card">
+                    <h3>Available Asset Pool</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ticker</th>
+                                <th>Company</th>
+                                <th>Expected Return</th>
+                                <th>Volatility</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assetBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- Quantum Output Panel -->
+                <div class="card full-width">
+                    <h3>Quantum Solver Result</h3>
+                    <pre id="outputLog">Awaiting job execution request...</pre>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
